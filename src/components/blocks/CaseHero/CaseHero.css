@@ -1,0 +1,49 @@
+.case-hero {
+  padding-top: 40px;
+}
+.case-hero-copy {
+  display: grid;
+  gap: 24px;
+  margin: 40px 0 56px;
+}
+.case-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--graphite);
+  font-size: 14px;
+  font-weight: 450;
+}
+.case-hero .display {
+  max-width: 1040px;
+  font-size: clamp(40px, 5.4vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+.case-hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 48px;
+  margin-bottom: 16px;
+}
+.case-hero-lead {
+  max-width: 680px;
+  color: var(--graphite);
+  font-size: 18px;
+  line-height: 28px;
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .case-hero {
+    padding-top: 24px;
+  }
+  .case-hero-copy {
+    margin: 28px 0 40px;
+  }
+  .case-hero-lead {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}

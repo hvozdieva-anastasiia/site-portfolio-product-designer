@@ -1,0 +1,64 @@
+.thumb {
+  position: relative;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+.thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--mist);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumb-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background:
+    linear-gradient(to top, rgba(246, 0, 157, 0.07), transparent 55%),
+    linear-gradient(90deg, rgba(255, 59, 0, 0.07), rgba(0, 142, 255, 0.09)),
+    var(--mist);
+}
+.thumb-kicker {
+  color: var(--graphite);
+  font: 500 10px/1 var(--font);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.thumb-title {
+  max-width: 85%;
+  font: 500 22px/1.2 var(--font);
+  letter-spacing: -0.3px;
+}
+.play {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--lift);
+  transition: transform 0.2s;
+}
+.duration {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(13, 13, 13, 0.82);
+  color: #fff;
+  font: 500 11px/16px var(--font);
+}

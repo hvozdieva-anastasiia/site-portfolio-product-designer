@@ -1,0 +1,65 @@
+.chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-self: end;
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow:
+    var(--lift),
+    0 24px 60px var(--drop);
+}
+.chat-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.chat-row--me {
+  justify-content: flex-end;
+}
+.bubble-text {
+  max-width: 320px;
+  padding: 10px 14px;
+  border-radius: 12px 12px 12px 4px;
+  background: var(--chip);
+  font-size: 13px;
+  line-height: 20px;
+}
+.bubble-text--me {
+  border-radius: 12px 12px 4px 12px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.composer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  margin-top: 4px;
+  padding: 0 6px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--placeholder);
+  font-size: 13px;
+}
+.composer-send {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--chip);
+}
+:root[data-theme='dark'] .composer-send {
+  color: var(--ink);
+}
+@media (max-width: 900px) {
+  .chat {
+    justify-self: stretch;
+    max-width: none;
+  }
+}

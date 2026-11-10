@@ -1,0 +1,23 @@
+.sk {
+  display: block;
+  flex: none;
+  border-radius: 4px;
+  background: var(--skel);
+}
+.sk--ink {
+  border-radius: 6px;
+  background: var(--ink);
+}
+.sk--blue {
+  background: var(--blue);
+}
+.sk--green {
+  background: var(--green);
+}
+.sk--tomato {
+  background: var(--tomato);
+}
+.sk--wash {
+  border-radius: 6px;
+  background: var(--wash);
+}

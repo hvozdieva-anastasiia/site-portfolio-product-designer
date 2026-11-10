@@ -1,0 +1,273 @@
+/* Index of groups on the left, the desk on the right. */
+.tool-desk {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 4.4vw, 72px);
+  align-items: stretch;
+}
+
+/* ---- Index: the group names, set large ---- */
+.tool-desk-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tool-desk-row {
+  border-top: 1px solid var(--line);
+}
+.tool-desk-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.tool-desk-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 18px 0;
+  border: 0;
+  background: none;
+  color: var(--ash);
+  text-align: left;
+  /* A tap selects at once: no double-tap-to-zoom wait, no grey flash. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    padding 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tool-desk-tab:hover {
+  color: var(--graphite);
+}
+.tool-desk-tab:focus-visible {
+  border-radius: 6px;
+  outline-offset: 4px;
+}
+.tool-desk-tab[aria-selected='true'] {
+  color: var(--ink);
+}
+/* The note folds open under the picked group. */
+.tool-desk-note {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0.45s;
+}
+.tool-desk-note p {
+  min-height: 0;
+  overflow: hidden;
+  color: var(--graphite);
+  font-size: 15px;
+  line-height: 22px;
+}
+.tool-desk-note p::after {
+  content: '';
+  display: block;
+  height: 18px;
+}
+.tool-desk-row[data-active='true'] .tool-desk-note {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+.tool-desk-name {
+  font: 500 clamp(28px, 2.6vw, 38px) / 1.1 var(--font);
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+/* A small stack of the group's tiles: folded when idle, fanned out when picked. */
+.tool-desk-stack {
+  display: flex;
+  flex-shrink: 0;
+  opacity: 0.45;
+  filter: grayscale(1);
+  transition:
+    opacity 0.3s,
+    filter 0.3s;
+}
+.tool-desk-stack .tool-tile {
+  box-shadow:
+    0 0 0 2px var(--paper),
+    var(--lift);
+  transition: margin 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tool-desk-stack .tool-tile + .tool-tile {
+  margin-left: -10px;
+}
+.tool-desk-tab:hover .tool-desk-stack {
+  opacity: 0.7;
+}
+.tool-desk-tab[aria-selected='true'] .tool-desk-stack {
+  opacity: 1;
+  filter: none;
+}
+
+/* ---- Stage: note, character, the dock of tools on her desk ---- */
+.tool-desk-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  /* A fixed row for the dock, so the figure keeps its size between groups. */
+  grid-template-rows: minmax(0, 1fr) 124px;
+  /* A fixed height, so the figure fits what is left and never sets the size.
+     The figure gets about 330px of it: three quarters of the first cut. */
+  height: clamp(420px, 34vw, 480px);
+  padding-top: 28px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: var(--mist);
+}
+.tool-desk-stage:focus-visible {
+  outline-offset: 4px;
+}
+.tool-desk-stage .aurora {
+  position: absolute;
+  z-index: -1;
+  right: -15%;
+  bottom: -32%;
+  left: -15%;
+  height: 62%;
+}
+.tool-desk-caption {
+  display: none;
+}
+.tool-desk-figure {
+  position: relative;
+  min-height: 0;
+}
+.tool-desk-dock {
+  display: flex;
+  align-self: start;
+  justify-self: center;
+  gap: 2px;
+  margin: 0 16px;
+  padding: 8px;
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow:
+    var(--lift),
+    0 18px 40px -16px var(--drop);
+}
+.tool-desk-dock li {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  width: 84px;
+  padding: 8px 4px 6px;
+  animation: tool-desk-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(var(--i) * 55ms);
+}
+.tool-desk-dock .tool-tile {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+}
+.tool-desk-dock .tool-tile img {
+  width: 20px;
+  height: 20px;
+}
+.tool-desk-dock li > span:last-child {
+  color: var(--graphite);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+@keyframes tool-desk-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+}
+
+/* Only the desktop index changes its row geometry on selection. */
+@media (width > 900px) {
+  .tool-desk-tab[aria-selected='true'] {
+    padding-bottom: 6px;
+  }
+  .tool-desk-tab[aria-selected='true'] .tool-desk-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .tool-desk-tab[aria-selected='true'] .tool-desk-stack .tool-tile + .tool-tile {
+    margin-left: 4px;
+  }
+}
+
+/* Tablets and phones: the index on top, the desk right under it. */
+@media (max-width: 900px) {
+  .tool-desk {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .tool-desk-tab {
+    padding: 16px 0;
+  }
+  .tool-desk-note {
+    display: none;
+  }
+  .tool-desk-stage {
+    grid-template-rows: auto auto 124px;
+    height: auto;
+    padding-top: 20px;
+  }
+  .tool-desk-caption {
+    display: block;
+    min-height: 22px;
+    padding: 0 16px;
+    color: var(--graphite);
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    animation: fade-in 0.4s ease both;
+  }
+  .tool-desk-figure {
+    height: clamp(180px, 46vw, 285px);
+  }
+}
+@media (max-width: 640px) {
+  .tool-desk-name {
+    font-size: 26px;
+  }
+  .tool-desk-tab {
+    gap: 16px;
+    padding: 14px 0;
+  }
+  .tool-desk-stack .tool-tile {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+  }
+  .tool-desk-stack .tool-tile img {
+    width: 14px;
+    height: 14px;
+  }
+  .tool-desk-stage {
+    grid-template-rows: auto auto 112px;
+  }
+  .tool-desk-dock {
+    gap: 0;
+    margin: 0 8px;
+    padding: 6px;
+    border-radius: 18px;
+  }
+  .tool-desk-dock li {
+    width: 60px;
+    padding-inline: 2px;
+  }
+  .tool-desk-dock .tool-tile {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .tool-desk-dock li > span:last-child {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}

@@ -1,0 +1,12 @@
+.aurora {
+  background: var(--aurora);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.aurora--panel {
+  position: absolute;
+  right: -5%;
+  bottom: -130px;
+  left: -5%;
+  height: 260px;
+}

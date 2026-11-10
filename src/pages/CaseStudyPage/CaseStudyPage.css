@@ -1,0 +1,9 @@
+/* The case page breathes a little less than the home page between chapters. */
+.case-study {
+  --section-gap: 160px;
+}
+@media (max-width: 900px) {
+  .case-study {
+    --section-gap: 104px;
+  }
+}

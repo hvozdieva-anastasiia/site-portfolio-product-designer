@@ -1,0 +1,32 @@
+.testimonial {
+  position: relative;
+  padding: 72px 24px 28px;
+  overflow: hidden;
+  text-align: center;
+}
+.quote-stack {
+  position: relative;
+  display: grid;
+}
+.quote-stack > .quote {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  animation: none;
+}
+.quote-stack > .quote[data-active='true'] {
+  visibility: visible;
+  animation: fade-in 0.4s ease;
+}
+@media (max-width: 640px) {
+  .testimonial {
+    padding: 48px 16px 20px;
+  }
+}
+@media (max-width: 900px) {
+  .quote-stack {
+    display: block;
+  }
+  .quote-stack > .quote:not([data-active='true']) {
+    display: none;
+  }
+}

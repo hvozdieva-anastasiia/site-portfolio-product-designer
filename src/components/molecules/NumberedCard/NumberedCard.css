@@ -1,0 +1,33 @@
+.numbered-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  height: 100%;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.numbered-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.numbered-card-n {
+  color: var(--graphite);
+  font: 500 12px/1.6 var(--font);
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
+}
+.numbered-card h3 {
+  font: 500 18px/1.35 var(--font);
+  letter-spacing: -0.2px;
+  text-wrap: balance;
+}
+.numbered-card p {
+  color: var(--graphite);
+  line-height: 24px;
+  text-wrap: pretty;
+}

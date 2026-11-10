@@ -1,0 +1,25 @@
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+}
+.field-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.field-error {
+  color: var(--tomato-ink);
+  font-size: 12px;
+  line-height: 16px;
+}
+.counter {
+  color: var(--graphite);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}

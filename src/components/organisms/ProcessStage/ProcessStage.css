@@ -1,0 +1,46 @@
+.process-char::before {
+  content: '';
+  position: absolute;
+  right: -10%;
+  bottom: -38%;
+  left: -10%;
+  height: 70%;
+  background: var(--aurora);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.process-win {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  min-height: 540px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--window-shadow);
+}
+.process-char {
+  position: relative;
+  display: grid;
+  min-height: 540px;
+  overflow: hidden;
+  border-left: 1px solid var(--hairline);
+  background: var(--mist);
+}
+@media (max-width: 900px) {
+  .process-win {
+    grid-template-columns: 1fr;
+  }
+  .process-char {
+    /* A square box that never grows taller than 380px. */
+    min-height: 0;
+    aspect-ratio: 1;
+    max-height: 380px;
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .process-char {
+    order: -1;
+    border-left: 0;
+  }
+}

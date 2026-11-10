@@ -1,0 +1,8 @@
+.outcome {
+  color: var(--graphite);
+  font-size: 13px;
+}
+.outcome strong {
+  color: var(--green-ink);
+  font-weight: 500;
+}

@@ -1,0 +1,65 @@
+.case-page {
+  padding-top: 56px;
+}
+.case-page-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 760px;
+  margin-top: 32px;
+}
+.case-page-lead {
+  color: var(--graphite);
+  font-size: 17px;
+  line-height: 28px;
+}
+.case-page-note {
+  margin-top: 8px;
+  color: var(--graphite);
+  line-height: 24px;
+}
+.case-page-art {
+  margin-top: 48px;
+}
+.case-page-art .art {
+  min-height: 540px;
+}
+.case-page-body {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 64px;
+  margin-top: 64px;
+}
+.case-page-body .spec {
+  margin-top: 0;
+}
+.case-page-sections section {
+  padding: 24px 0 28px;
+  border-top: 1px solid var(--hairline);
+}
+.case-page-sections h2 {
+  font-size: 15px;
+  font-weight: 500;
+}
+.case-page-sections p {
+  margin-top: 4px;
+  color: var(--graphite);
+  line-height: 24px;
+}
+.case-page-sections .soon {
+  font-size: 13px;
+}
+.case-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .case-page-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

@@ -1,0 +1,183 @@
+/* One viewport tall on desktop: the sticky header (64px) plus this section. */
+.hero-poster {
+  box-sizing: border-box;
+  height: calc(100vh - 64px);
+  height: calc(100svh - 64px);
+  min-height: 600px;
+  padding-top: clamp(20px, 3.6svh, 40px);
+  /* The glow is wider than the page; clip it sideways only. */
+  overflow-x: clip;
+}
+.hero-poster-inner {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(12px, 2.6svh, 28px);
+  height: 100%;
+}
+
+/* ---- Claim ---- */
+.hero-poster-head {
+  display: grid;
+  justify-items: center;
+  gap: clamp(14px, 2.2svh, 22px);
+  text-align: center;
+  animation: hero-poster-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-poster-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+  color: var(--graphite);
+  font-size: 13px;
+  font-weight: 450;
+  line-height: 20px;
+}
+.hero-poster .hero-poster-title {
+  /* As large as the width allows, but never so tall the stage gets cramped. */
+  font-size: clamp(44px, min(7.6vw, 12.4svh), 120px);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.hero-poster-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Stage: pitch | character | steps, standing on one hairline floor ---- */
+.hero-poster-stage {
+  /* The character is sized from the stage's own height and width. */
+  container-type: size;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(24px, 3vw, 48px);
+  border-bottom: 1px solid var(--line);
+}
+.hero-poster-pitch,
+.hero-poster-process {
+  padding-bottom: clamp(24px, 4svh, 44px);
+  animation: hero-poster-rise 0.8s 0.18s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-poster-pitch {
+  display: grid;
+  justify-items: start;
+  gap: 20px;
+  max-width: 340px;
+}
+.hero-poster-summary {
+  color: var(--graphite);
+  font-size: 17px;
+  line-height: 26px;
+  text-wrap: pretty;
+}
+.hero-poster-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.hero-poster-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-poster-process {
+  justify-self: end;
+  width: min(100%, 340px);
+}
+.hero-poster-figure {
+  position: relative;
+  width: min(100cqh, 46cqw);
+  aspect-ratio: 1;
+  animation: hero-poster-rise 0.9s 0.08s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+/* A stage light: the glow rises from the floor behind her. */
+.hero-poster-figure .aurora {
+  position: absolute;
+  bottom: -18%;
+  left: 50%;
+  width: 190%;
+  height: 62%;
+  transform: translateX(-50%);
+}
+.hero-poster-art {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes hero-poster-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Narrower desktops: the sides get tight, so the figure gives a little. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .hero-poster-figure {
+    width: min(100cqh, 40cqw);
+  }
+  .hero-poster-summary {
+    font-size: 15px;
+    line-height: 23px;
+  }
+  .hero-poster-pitch .btn {
+    padding-inline: 10px;
+  }
+}
+
+/* Phones and tablets: claim, pitch, character, steps — one after another. */
+@media (max-width: 900px) {
+  .hero-poster {
+    height: auto;
+    min-height: 0;
+    padding-top: 40px;
+  }
+  .hero-poster-inner {
+    gap: 32px;
+  }
+  .hero-poster .hero-poster-title {
+    font-size: clamp(40px, 11.5vw, 84px);
+  }
+  .hero-poster-stage {
+    container-type: normal;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'pitch'
+      'figure'
+      'process';
+    justify-items: center;
+    gap: 0;
+    border-bottom: 0;
+  }
+  .hero-poster-pitch {
+    grid-area: pitch;
+    justify-items: center;
+    max-width: 460px;
+    padding-bottom: 32px;
+    text-align: center;
+  }
+  .hero-poster-domains,
+  .hero-poster-actions {
+    justify-content: center;
+  }
+  .hero-poster-figure {
+    grid-area: figure;
+    width: min(100%, 440px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-poster-process {
+    grid-area: process;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+    padding: 28px 0 0;
+  }
+}

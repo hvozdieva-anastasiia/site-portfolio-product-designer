@@ -1,0 +1,9 @@
+.case-solution-list {
+  display: grid;
+  gap: 120px;
+}
+@media (max-width: 900px) {
+  .case-solution-list {
+    gap: 80px;
+  }
+}

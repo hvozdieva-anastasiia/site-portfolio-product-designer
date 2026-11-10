@@ -1,0 +1,32 @@
+.case-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid var(--hairline);
+}
+.case-next-link {
+  display: grid;
+  color: var(--ink);
+  text-decoration: none;
+}
+.case-next-title {
+  font: 500 56px/1 var(--font);
+  letter-spacing: -2px;
+  transition: opacity 0.15s;
+}
+.case-next-title span {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.case-next-link:hover .case-next-title span {
+  transform: translateX(6px);
+}
+@media (max-width: 640px) {
+  .case-next-title {
+    font-size: 40px;
+    letter-spacing: -1.2px;
+  }
+}

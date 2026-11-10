@@ -1,0 +1,27 @@
+.case-learnings-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.case-learnings-list li {
+  display: grid;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ink);
+}
+.case-learnings-list span {
+  color: var(--graphite);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.case-learnings-list p {
+  font: 500 22px/1.35 var(--font);
+  letter-spacing: -0.4px;
+  text-wrap: balance;
+}
+@media (max-width: 900px) {
+  .case-learnings-list {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

@@ -1,0 +1,94 @@
+.picker {
+  display: grid;
+  gap: 12px;
+}
+.picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.picker-label {
+  color: var(--graphite);
+  font-size: 13px;
+  font-weight: 450;
+  line-height: 20px;
+}
+.picker-toggle {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -4px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--lift);
+  color: var(--ink);
+  transition: background-color 0.15s;
+}
+.picker-toggle:hover {
+  background: var(--mist);
+}
+.picker-list {
+  display: grid;
+}
+.picker-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: baseline;
+  width: 100%;
+  padding: 9px 0 11px;
+  border: 0;
+  background: none;
+  /* Graphite, not Ash: 17px is small text and needs 4.5:1. */
+  color: var(--graphite);
+  font: 450 17px/1.35 var(--font);
+  letter-spacing: -0.17px;
+  text-align: left;
+  transition: color 0.4s;
+}
+.picker-step:hover {
+  color: var(--ink);
+}
+.picker-step[data-state='active'] {
+  color: var(--ink);
+  font-weight: 500;
+}
+.picker-step:focus-visible {
+  border-radius: 6px;
+}
+.picker-n {
+  color: var(--graphite);
+  font: 500 10px/1.6 var(--font);
+  letter-spacing: 0.5px;
+}
+.picker-text {
+  text-wrap: pretty;
+}
+.picker-bar {
+  position: absolute;
+  bottom: 2px;
+  left: 32px;
+  width: calc(100% - 32px);
+  height: 2px;
+  border-radius: 1px;
+  background: var(--ink);
+  transform-origin: left;
+  animation: picker-fill linear both;
+}
+.picker[data-paused] .picker-bar {
+  animation-play-state: paused;
+}
+@keyframes picker-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,29 @@
+.phone-shot {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow:
+    0 0 0 6px var(--surface),
+    0 0 0 7px var(--hairline),
+    rgba(0, 0, 0, 0.06) 0 24px 48px -12px,
+    rgba(0, 0, 0, 0.05) 0 8px 16px -4px;
+}
+.phone-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+:root[data-theme='dark'] .phone-shot {
+  box-shadow:
+    0 0 0 6px #232326,
+    0 0 0 7px var(--hairline),
+    rgba(0, 0, 0, 0.5) 0 24px 48px -12px;
+}
+@media (max-width: 640px) {
+  .phone-shot {
+    border-radius: 22px;
+  }
+}

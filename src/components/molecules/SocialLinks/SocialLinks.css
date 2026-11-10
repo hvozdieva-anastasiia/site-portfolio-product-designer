@@ -1,0 +1,15 @@
+.socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.socials .key {
+  height: 32px;
+  min-width: 32px;
+}
+.socials img {
+  opacity: 0.75;
+}
+:root[data-theme='dark'] .socials img {
+  filter: invert(1);
+}

@@ -1,0 +1,11 @@
+.triple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .triple {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

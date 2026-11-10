@@ -1,0 +1,32 @@
+.stat {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+}
+.stat-value {
+  margin-bottom: 8px;
+  font: 500 44px/1 var(--font);
+  letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
+}
+.stat--lg .stat-value {
+  font-size: clamp(56px, 7vw, 88px);
+  letter-spacing: -0.045em;
+}
+.stat-label {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.stat-note {
+  max-width: 340px;
+  color: var(--graphite);
+  font-size: 14px;
+  line-height: 22px;
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .stat-value {
+    font-size: 36px;
+  }
+}

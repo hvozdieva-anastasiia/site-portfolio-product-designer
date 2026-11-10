@@ -1,0 +1,35 @@
+.case-overview {
+  margin-top: 96px;
+}
+.case-overview > .label {
+  margin-bottom: 20px;
+}
+.case-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.case-overview-grid > div {
+  padding-top: 20px;
+  border-top: 1px solid var(--ink);
+}
+.case-overview-grid dt {
+  margin-bottom: 12px;
+  font: 500 20px/1.3 var(--font);
+  letter-spacing: -0.3px;
+}
+.case-overview-grid dd {
+  color: var(--graphite);
+  font-size: 16px;
+  line-height: 26px;
+  text-wrap: pretty;
+}
+@media (max-width: 900px) {
+  .case-overview {
+    margin-top: 72px;
+  }
+  .case-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

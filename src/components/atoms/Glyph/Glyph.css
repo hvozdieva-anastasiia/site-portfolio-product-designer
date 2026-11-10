@@ -1,0 +1,20 @@
+.glyph {
+  display: inline-block;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.glyph--blue {
+  color: var(--blue);
+}
+.glyph--green {
+  color: var(--green);
+}
+.glyph--tomato {
+  color: var(--tomato);
+}
+.glyph--amber {
+  color: var(--amber);
+}

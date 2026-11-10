@@ -1,0 +1,31 @@
+.dialog-card {
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+  overflow: auto;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--window-shadow);
+}
+.dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.dialog-head h2 {
+  font: 500 24px/1.25 var(--font);
+  letter-spacing: -0.24px;
+}
+.dialog-head p {
+  margin-top: 4px;
+  color: var(--graphite);
+  font-size: 13px;
+  line-height: 20px;
+}
+@media (max-width: 640px) {
+  .dialog-card {
+    padding: 20px 16px;
+  }
+}

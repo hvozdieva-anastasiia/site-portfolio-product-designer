@@ -1,0 +1,12 @@
+kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: var(--chip);
+  color: var(--graphite);
+  font: 500 11px/16px var(--font);
+}

@@ -1,0 +1,44 @@
+.funnel-bar {
+  display: grid;
+  gap: 10px;
+}
+.funnel-bar-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+}
+.funnel-bar-figures {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.funnel-bar-count {
+  color: var(--graphite);
+  font-size: 13px;
+}
+.funnel-bar-figures strong {
+  min-width: 64px;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: right;
+}
+.funnel-bar-track {
+  display: block;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--chip);
+}
+.funnel-bar-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--fog);
+}
+.funnel-bar[data-emphasis='true'] .funnel-bar-track i {
+  background: var(--ink);
+}

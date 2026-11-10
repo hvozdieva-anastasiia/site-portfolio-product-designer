@@ -1,0 +1,66 @@
+.screen-strip {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  background: var(--mist);
+}
+.screen-strip > .aurora--panel {
+  bottom: -160px;
+  height: 320px;
+}
+.screen-strip-list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(20px, 3.5vw, 48px);
+  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 56px);
+}
+.screen-strip-list > li {
+  flex: 0 1 280px;
+  min-width: 0;
+}
+.screen-strip[data-count='1'] .screen-strip-list > li {
+  flex-basis: 300px;
+}
+.screen-strip[data-count='5'] .screen-strip-list > li {
+  flex-basis: 220px;
+}
+.screen-strip-step {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.screen-strip-step span {
+  color: var(--graphite);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.screen-strip-list:focus-visible {
+  outline-offset: -4px;
+}
+
+/* Narrow screens: the phones keep a readable size and scroll sideways. */
+@media (max-width: 900px) {
+  .screen-strip-list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+  }
+  .screen-strip-list > li,
+  .screen-strip[data-count] .screen-strip-list > li {
+    flex: 0 0 min(220px, 62vw);
+    scroll-snap-align: start;
+  }
+  .screen-strip[data-count='1'] .screen-strip-list {
+    justify-content: center;
+  }
+  .screen-strip[data-count='1'] .screen-strip-list > li {
+    flex-basis: min(260px, 72vw);
+  }
+}

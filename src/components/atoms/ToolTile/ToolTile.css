@@ -1,0 +1,19 @@
+.tool-tile {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.tool-tile img {
+  opacity: 0.8;
+}
+.tool-mono {
+  color: var(--graphite);
+  font: 500 12px/1 var(--font);
+}
+:root[data-theme='dark'] .tool-tile img {
+  filter: invert(1);
+}

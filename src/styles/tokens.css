@@ -1,0 +1,128 @@
+:root {
+  color-scheme: light;
+
+  --paper: #ffffff;
+  --surface: #ffffff; /* raised white: buttons, cards on a Mist slab */
+  --ink: #202020;
+  --graphite: #646464;
+  --ash: #888888; /* large text only: 3.5:1 on white */
+  --carbon: #0d0d0d;
+  --carbon-hover: #2b2b2b;
+  --on-carbon: #ffffff;
+  --mist: #f9f9f9;
+  --chip: #f1f1f1;
+  --pressed: #eaeaea;
+  --hairline: rgba(0, 0, 0, 0.06);
+  --fog: #bbbbbb;
+
+  --blue: #0588f0;
+  --wash: #e6f4fe;
+  --tomato: #e54d2e;
+  --green: #30a46c;
+  --amber: #f5a524;
+  /* Darker twins for small text, so it passes contrast checks */
+  --tomato-ink: #c23a1f;
+  --green-ink: #1f7a4d;
+  --crimson-ink: #d12a70;
+
+  --skel: #ececec;
+  --dot: #cfcfcf;
+  --hover: rgba(0, 0, 0, 0.04);
+  --line: rgba(0, 0, 0, 0.1);
+  --line-hover: rgba(0, 0, 0, 0.14);
+  --drop: rgba(0, 0, 0, 0.06);
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --giant: #e4e4e4;
+  --scrim: rgba(32, 32, 32, 0.22);
+  --placeholder: #6b6b6b;
+
+  /* Illustrated character (placeholder for the Rive animation) */
+  --cs-skin: #f1c9a5;
+  --cs-hair: #3a2d29;
+  --cs-top: #9b6bdf;
+  --cs-desk: #dcdcdc;
+  --cs-laptop: #c9c9c9;
+  --cs-pot: #e7b79b;
+
+  --aurora: linear-gradient(
+    90deg,
+    rgba(255, 59, 0, 0.2) 0%,
+    rgba(246, 0, 157, 0.2) 38%,
+    rgba(151, 62, 198, 0.2) 71%,
+    rgba(0, 142, 255, 0.2) 100%
+  );
+
+  --lift:
+    rgba(0, 0, 0, 0.06) 0 0 0 0.5px, rgba(0, 0, 0, 0.1) 0 1px 1px -1px,
+    rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+  --window-shadow:
+    rgba(0, 0, 0, 0.07) 0 0 0 0.5px, rgba(0, 0, 0, 0.07) 0 149px 199px 0,
+    rgba(0, 0, 0, 0.05) 0 62.249px 83.137px 0,
+    rgba(0, 0, 0, 0.04) 0 33.281px 44.449px 0,
+    rgba(0, 0, 0, 0.04) 0 18.657px 24.918px 0,
+    rgba(0, 0, 0, 0.03) 0 9.909px 13.234px 0,
+    rgba(0, 0, 0, 0.02) 0 4.123px 5.507px 0;
+
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Newsreader', 'Heldane Text', Georgia, serif;
+  --mono: 'JetBrains Mono', 'Berkeley Mono', ui-monospace, Consolas, monospace;
+
+  --container: 1244px;
+  --gutter: 24px;
+  --section-gap: 144px;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #0c0c0d;
+  --surface: #1a1a1c;
+  --ink: #ececec;
+  --graphite: #a1a1a1;
+  --ash: #7a7a7a;
+  --carbon: #ececec;
+  --carbon-hover: #ffffff;
+  --on-carbon: #0d0d0d;
+  --mist: #131314;
+  --chip: #202022;
+  --pressed: #2b2b2e;
+  --hairline: rgba(255, 255, 255, 0.09);
+  --fog: #5c5c5c;
+
+  --blue: #2b9bff;
+  --wash: rgba(5, 136, 240, 0.2);
+  --tomato: #ff6a4d;
+  --green: #3cb97f;
+  --tomato-ink: #ff8a70;
+  --green-ink: #4cc38a;
+  --crimson-ink: #ff7ab0;
+
+  --skel: #2b2b2f;
+  --dot: #3d3d42;
+  --hover: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.14);
+  --line-hover: rgba(255, 255, 255, 0.26);
+  --drop: rgba(0, 0, 0, 0.45);
+  --nav-bg: rgba(12, 12, 13, 0.85);
+  --giant: #242428;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --placeholder: #8f8f8f;
+
+  --cs-hair: #7d6459;
+  --cs-top: #8a5ed4;
+  --cs-desk: #2f2f34;
+  --cs-laptop: #3e3e44;
+  --cs-pot: #b98468;
+
+  --aurora: linear-gradient(
+    90deg,
+    rgba(255, 59, 0, 0.16) 0%,
+    rgba(246, 0, 157, 0.16) 38%,
+    rgba(151, 62, 198, 0.2) 71%,
+    rgba(0, 142, 255, 0.18) 100%
+  );
+
+  --lift: rgba(255, 255, 255, 0.1) 0 0 0 0.5px, rgba(0, 0, 0, 0.5) 0 1px 2px 0;
+  --window-shadow:
+    rgba(255, 255, 255, 0.09) 0 0 0 0.5px,
+    rgba(0, 0, 0, 0.55) 0 60px 120px -20px, rgba(0, 0, 0, 0.4) 0 24px 48px -12px;
+}

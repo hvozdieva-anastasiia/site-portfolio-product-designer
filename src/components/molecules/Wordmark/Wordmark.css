@@ -1,0 +1,14 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  color: var(--ink);
+  font: 700 19px/1 var(--font);
+  letter-spacing: -0.4px;
+  text-decoration: none;
+}
+@media (max-width: 640px) {
+  .wm-rest {
+    display: none;
+  }
+}

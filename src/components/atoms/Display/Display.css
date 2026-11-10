@@ -1,0 +1,19 @@
+.display {
+  font: 500 56px/1 var(--font);
+  letter-spacing: -2px;
+  text-wrap: balance;
+}
+.display--sm {
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+@media (max-width: 900px) {
+  .display {
+    font-size: clamp(38px, 9.5vw, 56px);
+    letter-spacing: clamp(-2px, -0.035em, -1.2px);
+  }
+  .display--sm {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+}

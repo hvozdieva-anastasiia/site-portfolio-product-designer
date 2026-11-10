@@ -1,0 +1,131 @@
+.mini-art {
+  position: relative;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+.mini-art {
+  height: 200px;
+  padding: 4px;
+}
+.mini-doc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 20px 22px 0;
+  border-radius: 8px;
+  background: var(--mist);
+  -webkit-mask-image: linear-gradient(#000 60%, transparent 100%);
+  mask-image: linear-gradient(#000 60%, transparent 100%);
+}
+.mini-ask {
+  gap: 8px;
+}
+.ask-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.ask-bubble--dim {
+  opacity: 0.6;
+}
+.ask-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--wash);
+  color: var(--ink);
+  font: 600 11px/1 var(--font);
+}
+.ask-frame {
+  height: 56px;
+  margin-top: auto;
+  border: 1px dashed var(--line-hover);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: var(--chip);
+}
+.crowd-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 160px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 14px 12px;
+  border-radius: 18px 18px 0 0;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.crowd-promo {
+  flex: none;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--chip);
+}
+.crowd-promo--b {
+  background: var(--wash);
+}
+.crowd-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.crowd-row i {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--skel);
+}
+.crowd-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(229, 77, 46, 0.4);
+}
+.mini-stages {
+  gap: 10px;
+}
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+}
+.stage-dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--dot);
+  border-radius: 50%;
+}
+.stage--done .stage-dot {
+  border-color: var(--green);
+  background: var(--green);
+}
+.stage--fail .stage-dot {
+  border-color: var(--tomato);
+  background: rgba(229, 77, 46, 0.2);
+}
+.stage--todo {
+  opacity: 0.6;
+}
+.mini-crowd {
+  padding-bottom: 0;
+}

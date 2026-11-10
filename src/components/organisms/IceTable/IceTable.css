@@ -1,0 +1,114 @@
+.ice {
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--window-shadow);
+}
+.ice-scroll {
+  overflow-x: auto;
+}
+.ice-scroll:focus-visible {
+  outline-offset: -2px;
+}
+.ice table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.ice th,
+.ice td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--hairline);
+  text-align: center;
+}
+.ice thead th {
+  padding-top: 16px;
+  padding-bottom: 12px;
+  background: var(--mist);
+  color: var(--graphite);
+  font: 500 11px/1.6 var(--font);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.ice abbr {
+  text-decoration: none;
+}
+.ice th:first-child,
+.ice td:first-child {
+  width: 56px;
+  padding-left: 28px;
+  text-align: left;
+}
+.ice tbody th,
+.ice thead th:nth-child(2) {
+  text-align: left;
+}
+.ice tbody th {
+  font-weight: 450;
+}
+.ice td:last-child,
+.ice th:last-child {
+  width: 120px;
+  padding-right: 28px;
+  text-align: right;
+}
+.ice td {
+  color: var(--graphite);
+}
+.ice-n {
+  font-size: 13px;
+}
+.ice tr[data-selected='false'] th {
+  color: var(--graphite);
+}
+.ice-score {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 52px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--chip);
+  color: var(--graphite);
+  font-size: 13px;
+  font-weight: 500;
+}
+.ice tr[data-selected='true'] .ice-score {
+  background: var(--carbon);
+  color: var(--on-carbon);
+}
+.ice-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 28px;
+  background: var(--mist);
+  color: var(--graphite);
+  font-size: 13px;
+}
+.ice-foot p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.ice-key {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--carbon);
+}
+@media (max-width: 640px) {
+  .ice th:first-child,
+  .ice td:first-child {
+    padding-left: 16px;
+  }
+  .ice td:last-child,
+  .ice th:last-child {
+    padding-right: 16px;
+  }
+  .ice-foot {
+    padding: 16px;
+  }
+}

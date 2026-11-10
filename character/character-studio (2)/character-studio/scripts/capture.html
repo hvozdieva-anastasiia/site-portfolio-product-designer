@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rive frame capture</title>
+<style>html,body{margin:0;background:#fff}canvas{display:block}</style></head>
+<body><canvas id="stage"></canvas>
+<script type="module">
+// Deterministic frame capture for scripts/capture-frames.mjs: plays nothing, scrubs on request.
+import {Rive,Layout,Fit,Alignment,RuntimeLoader} from '@rive-app/react-canvas';
+RuntimeLoader.setWasmUrl('/rive/rive.wasm');
+RuntimeLoader.setWasmFallbackUrl('/rive/rive_fallback.wasm');
+const q=new URLSearchParams(location.search),canvas=document.getElementById('stage');
+canvas.width=+q.get('w');canvas.height=+q.get('h');
+const animation=q.get('animation');
+const rive=new Rive({src:(q.get('src')??'/rive/office-character.riv')+'?'+Date.now(),canvas,artboard:q.get('artboard'),animations:animation,autoplay:false,
+ layout:new Layout({fit:Fit.Contain,alignment:Alignment.Center}),
+ onLoad(){window.captureReady=true;},onLoadError(e){window.captureError=String(e?.data??e);}});
+const frame=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+window.scrubTo=async seconds=>{rive.scrub(animation,seconds);await frame();};
+</script></body></html>

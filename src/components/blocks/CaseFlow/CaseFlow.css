@@ -1,0 +1,8 @@
+.case-flow .screen-strip-list {
+  justify-content: space-between;
+}
+@media (max-width: 900px) {
+  .case-flow .screen-strip-list {
+    justify-content: flex-start;
+  }
+}

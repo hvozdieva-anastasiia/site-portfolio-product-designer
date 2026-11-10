@@ -1,0 +1,72 @@
+.hero {
+  position: relative;
+  padding-top: 96px;
+  overflow-x: clip;
+  /* room below the window so its glow and shadow are not cut vertically */
+  padding-bottom: 0;
+}
+.hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: end;
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 9999px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+  color: var(--graphite);
+  font-size: 12px;
+  font-weight: 450;
+}
+.hero-side {
+  justify-self: end;
+  max-width: 440px;
+  text-align: right;
+}
+.hero-side p {
+  margin-bottom: 20px;
+  color: var(--graphite);
+  line-height: 24px;
+}
+.hero-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.hero-stage {
+  position: relative;
+  margin-top: 64px;
+}
+.hero-stage .aurora {
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  width: min(1700px, 150vw);
+  height: 72%;
+  transform: translateX(-50%);
+}
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 56px;
+  }
+  .hero-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero-side {
+    justify-self: start;
+    text-align: left;
+  }
+  .hero-actions {
+    justify-content: flex-start;
+  }
+  .hero-stage {
+    margin-top: 40px;
+  }
+}

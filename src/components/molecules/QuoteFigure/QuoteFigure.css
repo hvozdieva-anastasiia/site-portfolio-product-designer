@@ -1,0 +1,73 @@
+.quote {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  min-height: 250px;
+  animation: fade-in 0.4s ease;
+}
+.quote blockquote {
+  max-width: 780px;
+  font: 400 28px/36px var(--serif);
+  font-feature-settings: 'ss03';
+  letter-spacing: -0.28px;
+  text-wrap: balance;
+}
+.quote figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.quote figcaption .avatar {
+  margin-bottom: 10px;
+}
+.quote-name {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.quote-role {
+  color: var(--graphite);
+  font-size: 13px;
+}
+.quote--long blockquote {
+  font-size: 22px;
+  line-height: 32px;
+}
+.quote--xl blockquote {
+  font-size: 18px;
+  line-height: 28px;
+}
+.quote-meta {
+  margin-top: 2px;
+  color: var(--graphite);
+  font-size: 12px;
+}
+.quote-full {
+  margin-top: 6px;
+}
+@media (max-width: 640px) {
+  .quote blockquote {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .quote {
+    gap: 24px;
+    min-height: 0;
+  }
+  .quote blockquote {
+    font-size: 21px;
+    line-height: 30px;
+  }
+  .quote--long blockquote {
+    font-size: 19px;
+    line-height: 28px;
+  }
+  .quote--xl blockquote {
+    font-size: 17px;
+    line-height: 26px;
+  }
+}

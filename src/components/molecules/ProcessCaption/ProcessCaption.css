@@ -1,0 +1,49 @@
+.process-caption {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 16px 20px 20px;
+}
+.process-caption-text {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 46px;
+  font: 500 17px/1.35 var(--font);
+  letter-spacing: -0.17px;
+}
+.process-caption-n {
+  color: var(--graphite);
+  font: 500 10px/1.6 var(--font);
+  letter-spacing: 0.5px;
+}
+.process-caption-segments {
+  display: flex;
+  gap: 6px;
+}
+.process-caption-segments li {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--line);
+}
+.process-caption-segments li[data-state='done'] {
+  background: var(--ink);
+}
+.process-caption-bar {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform-origin: left;
+  animation: process-caption-fill linear both;
+}
+@keyframes process-caption-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

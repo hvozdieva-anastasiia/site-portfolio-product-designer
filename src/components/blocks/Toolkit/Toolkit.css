@@ -1,0 +1,16 @@
+/* Full-width band: the glow may be wider than the page, but must not scroll it. */
+.toolkit-band {
+  overflow-x: clip;
+}
+/* The panel's glow: wider than the page, running past the panel's edges. */
+.toolkit-glow {
+  position: relative;
+}
+.toolkit-glow .aurora {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: min(1700px, 150vw);
+  height: 80%;
+  transform: translateX(-50%);
+}

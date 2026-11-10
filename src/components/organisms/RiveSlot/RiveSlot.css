@@ -1,0 +1,24 @@
+.rive-slot {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 100%;
+  height: 100%;
+}
+.rive-slot > div:not([hidden]) {
+  display: grid;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+}
+.rive-canvas {
+  /* Out of flow: the canvas must never decide the height of its container. */
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.rive-canvas[hidden] {
+  display: none;
+}

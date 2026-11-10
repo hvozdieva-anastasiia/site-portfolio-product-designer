@@ -1,0 +1,35 @@
+.story-head {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  max-width: 800px;
+  margin-bottom: 48px;
+}
+.story-head .label {
+  margin: 0;
+}
+.story-head h2 {
+  font: 500 40px/1.12 var(--font);
+  letter-spacing: -1.2px;
+  text-wrap: balance;
+}
+.story-head-text {
+  max-width: 680px;
+  color: var(--graphite);
+  font-size: 17px;
+  line-height: 28px;
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .story-head {
+    margin-bottom: 32px;
+  }
+  .story-head h2 {
+    font-size: 30px;
+    letter-spacing: -0.8px;
+  }
+  .story-head-text {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}

@@ -1,0 +1,33 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  font: 500 13px/20px var(--font);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s;
+}
+.btn--carbon {
+  background: var(--carbon);
+  color: var(--on-carbon);
+}
+.btn--carbon:hover {
+  background: var(--carbon-hover);
+}
+.btn--lift {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--lift);
+}
+.btn--lift:hover {
+  background: var(--mist);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}

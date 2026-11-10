@@ -1,0 +1,41 @@
+.media-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.media-card:hover .mini-art,
+.media-card:hover .thumb {
+  border-color: var(--line-hover);
+}
+.media-meta {
+  color: var(--graphite);
+  font: 500 12px/12px var(--font);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.media-title {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.media-text {
+  margin-top: 4px;
+  color: var(--graphite);
+  line-height: 24px;
+}
+.media-link {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.media-card:hover .media-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.media-card:hover .play {
+  transform: scale(1.08);
+}

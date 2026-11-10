@@ -1,0 +1,46 @@
+.case-role {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+}
+.case-role-main h2 {
+  margin-bottom: 20px;
+  font: 500 40px/1.12 var(--font);
+  letter-spacing: -1.2px;
+  text-wrap: balance;
+}
+.case-role-main > p:not(.label) {
+  color: var(--graphite);
+  font-size: 17px;
+  line-height: 28px;
+  text-wrap: pretty;
+}
+.case-role-main .spec {
+  margin-top: 32px;
+}
+.case-role-scope ul {
+  border-top: 1px solid var(--hairline);
+}
+.case-role-scope li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 17px;
+  line-height: 24px;
+}
+.case-role-scope li span {
+  color: var(--graphite);
+  font-size: 14px;
+}
+@media (max-width: 900px) {
+  .case-role {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .case-role-main h2 {
+    font-size: 30px;
+    letter-spacing: -0.8px;
+  }
+}

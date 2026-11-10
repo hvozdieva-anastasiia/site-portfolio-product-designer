@@ -1,0 +1,11 @@
+.agents/
+.claude/
+character/
+public/rive/
+.local/
+dist/
+storybook-static/
+test-results/
+playwright-report/
+coverage/
+pnpm-lock.yaml

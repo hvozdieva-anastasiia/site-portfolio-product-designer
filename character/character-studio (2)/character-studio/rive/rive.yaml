@@ -1,0 +1,5 @@
+name: office-character
+main: OfficeCharacter
+logs:
+  file: build/office-character.log
+  problems: build/problems.log

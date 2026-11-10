@@ -1,0 +1,113 @@
+.solution {
+  display: grid;
+  gap: 32px;
+}
+.solution-head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 8px 64px;
+  align-items: end;
+}
+.solution-n {
+  grid-column: 1 / -1;
+  color: var(--graphite);
+  font: 500 12px/1.6 var(--font);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.solution-head h3 {
+  font: 500 32px/1.15 var(--font);
+  letter-spacing: -0.9px;
+  text-wrap: balance;
+}
+.solution-summary {
+  color: var(--graphite);
+  font-size: 16px;
+  line-height: 26px;
+  text-wrap: pretty;
+}
+.solution-window {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--window-shadow);
+}
+.solution-why {
+  padding: 32px;
+  border-right: 1px solid var(--hairline);
+}
+.solution-why > .label {
+  margin-bottom: 16px;
+}
+.solution-ui {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  overflow: hidden;
+  background: var(--mist);
+}
+.solution-ui::before {
+  content: '';
+  position: absolute;
+  right: -10%;
+  bottom: -160px;
+  left: -10%;
+  height: 300px;
+  background: var(--aurora);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.solution-ui-top {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+.solution-ui-top .label {
+  margin: 0;
+}
+.solution-screens {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3vw, 36px);
+}
+.solution-screens > li {
+  flex: 0 1 260px;
+  min-width: 0;
+}
+.solution-screens[data-count='1'] > li {
+  flex-basis: 290px;
+}
+
+@media (max-width: 1080px) {
+  .solution-head,
+  .solution-window {
+    grid-template-columns: 1fr;
+  }
+  .solution-why {
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+}
+@media (max-width: 640px) {
+  .solution-head h3 {
+    font-size: 26px;
+    letter-spacing: -0.6px;
+  }
+  .solution-why,
+  .solution-ui {
+    padding: 24px 16px;
+  }
+  .solution-screens {
+    gap: 14px;
+  }
+}

@@ -1,0 +1,162 @@
+.contact h2 {
+  font: 500 28px/1.29 var(--font);
+  letter-spacing: -0.28px;
+}
+.contact h2 .muted {
+  display: block;
+}
+.contact {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 64px;
+  overflow: hidden;
+}
+.contact-copy {
+  position: relative;
+}
+.contact-text {
+  max-width: 420px;
+  margin: 16px 0 28px;
+  color: var(--graphite);
+  line-height: 24px;
+}
+.contact-text:last-child {
+  margin-bottom: 0;
+}
+.contact.contact--mascot {
+  --contact-mascot-size: clamp(100px, 12vw, 154px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(16px, 3vw, 36px);
+  padding: clamp(24px, 3.4vw, 44px);
+}
+.contact--mascot .contact-text {
+  margin-top: 10px;
+}
+.contact-scene {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--contact-mascot-size) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  justify-self: end;
+  width: min(100%, 575px);
+  min-width: 0;
+}
+.contact-mascot {
+  aspect-ratio: 1;
+  transform: scale(1.5);
+  transform-origin: right center;
+}
+.contact-message {
+  position: relative;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--lift);
+  font-size: 14px;
+  line-height: 20px;
+}
+.contact-message::before {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--surface);
+  content: '';
+}
+.contact-message-untyped {
+  visibility: hidden;
+}
+.contact-message-status {
+  display: block;
+  margin-top: 3px;
+  color: var(--graphite);
+  font-size: 12px;
+}
+.contact-reply {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.contact-reply .input--multiline {
+  min-height: 50px;
+  padding-block: 6px;
+  line-height: 18px;
+}
+.contact-reply-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--graphite);
+  font-size: 12px;
+  line-height: 16px;
+}
+.contact-reply-actions .btn {
+  height: 40px;
+}
+/* Use the panel padding on tighter two-column layouts without rewrapping the text. */
+@media (width > 720px) {
+  .contact.contact--mascot {
+    --contact-side-offset: clamp(0px, calc((1312px - 100vw) / 4), 18px);
+  }
+  .contact--mascot .contact-copy {
+    inset-inline-end: var(--contact-side-offset);
+  }
+  .contact-scene {
+    inset-inline-start: var(--contact-side-offset);
+  }
+}
+@media (max-width: 900px) {
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+}
+@media (max-width: 720px) {
+  .contact.contact--mascot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .contact-scene {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    justify-self: start;
+  }
+  .contact-mascot {
+    justify-self: center;
+    width: clamp(96px, 26vw, 128px);
+    transform: none;
+  }
+  .contact-message::before {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .contact h2 {
+    font-size: 24px;
+    letter-spacing: -0.24px;
+  }
+  .contact.contact--mascot {
+    padding: 20px 16px;
+  }
+  .contact--mascot h2 {
+    font-size: clamp(20px, 5.65vw, 24px);
+  }
+  .contact--mascot .contact-text {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

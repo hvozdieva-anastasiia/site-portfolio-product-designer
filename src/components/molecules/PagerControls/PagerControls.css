@@ -1,0 +1,20 @@
+.pager {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.pager-count {
+  min-width: 56px;
+  color: var(--graphite);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .pager {
+    margin-top: 28px;
+  }
+}

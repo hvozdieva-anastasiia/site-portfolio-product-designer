@@ -1,0 +1,28 @@
+{
+  "name": "character-animation-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "character:generate": "node scripts/build-character.mjs",
+    "character:rebuild": "node scripts/rebuild.mjs",
+    "rive": "node scripts/rive.mjs",
+    "rive:verify": "node scripts/rive.mjs rive --verify",
+    "capture": "node scripts/capture-frames.mjs",
+    "studio": "node scripts/start-studio.mjs"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@rive-app/react-canvas": "latest",
+    "antd": "^6.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1",
+    "vite": "^7.0.0"
+  }
+}
