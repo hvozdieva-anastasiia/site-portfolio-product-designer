@@ -1,3 +1,4 @@
+import { withBase } from '../../../lib/router';
 import type { NavLink } from '../../../content/types';
 import { RouterLink } from '../../atoms/RouterLink/RouterLink';
 import {
@@ -54,7 +55,7 @@ export function Footer({
             <ul>
               {exploreLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href}>{link.label}</a>
+                  <a href={withBase(link.href)}>{link.label}</a>
                 </li>
               ))}
             </ul>
