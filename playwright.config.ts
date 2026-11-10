@@ -18,5 +18,6 @@ export default defineConfig({
   webServer: {
     command: 'pnpm exec vite --host 127.0.0.1 --port 4173 --strictPort',
     url: baseURL,
+    reuseExistingServer: !process.env.CI,
   },
 });

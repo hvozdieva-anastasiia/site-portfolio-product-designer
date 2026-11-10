@@ -1,7 +1,7 @@
-import { withBase } from '../../../lib/router';
 import { useEffect, useRef, useState } from 'react';
 import type { NavLink } from '../../../content/types';
 import { Key } from '../../atoms/Key/Key';
+import { RouterLink } from '../../atoms/RouterLink/RouterLink';
 import { Kbd } from '../../atoms/Kbd/Kbd';
 import { ThemeToggle } from '../../molecules/ThemeToggle/ThemeToggle';
 import { Wordmark } from '../../molecules/Wordmark/Wordmark';
@@ -57,9 +57,13 @@ export function Header({
           aria-label="Main navigation"
         >
           {links.map((link) => (
-            <a key={link.href} href={withBase(link.href)} onClick={() => setOpen(false)}>
+            <RouterLink
+              key={link.href}
+              to={link.href}
+              onClick={() => setOpen(false)}
+            >
               {link.label}
-            </a>
+            </RouterLink>
           ))}
         </nav>
         <div className="nav-actions">

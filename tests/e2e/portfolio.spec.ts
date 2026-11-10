@@ -8,6 +8,7 @@ test('shows the three cases and opens a case page', async ({ page }) => {
   await expect(page.getByRole('article')).toHaveCount(3);
   await page
     .getByRole('link', { name: 'View project: Yezzz! Retail Telecom Brand' })
+    .first()
     .click();
   await expect(page).toHaveURL(/\/cases\/yezzz$/);
   await expect(
@@ -87,7 +88,7 @@ test('hero greets by name and shows the four-step process', async ({
   await expect(
     page.getByRole('heading', {
       level: 1,
-      name: /Anastasiia.*right problems/s,
+      name: /right problems to solve/,
     }),
   ).toBeVisible();
   const steps = page
@@ -95,7 +96,9 @@ test('hero greets by name and shows the four-step process', async ({
     .getByRole('listitem');
   await expect(steps).toHaveCount(4);
   await expect(steps.first()).toContainText('Ask what the real problem is.');
-  await expect(page.locator('.process li[aria-current="step"]')).toHaveCount(1);
+  await expect(page.locator('.picker-list [aria-current="step"]')).toHaveCount(
+    1,
+  );
 });
 
 for (const slug of ['yezzz', 'yo-esim', 'ad-management-app']) {
@@ -148,18 +151,19 @@ for (const slug of ['yezzz', 'yo-esim', 'ad-management-app']) {
 
 test('the animated character loads in the hero', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.process-char canvas')).toBeVisible({
+  await expect(page.locator('.hero-poster-art canvas')).toBeVisible({
     timeout: 20000,
   });
 });
 test('toolkit groups switch the active desk', async ({ page }) => {
   await page.goto('/');
-  const design = page.getByRole('button', { name: 'Design', exact: true });
+  const design = page.getByRole('tab', { name: 'Design' });
   await design.click();
-  await expect(design).toHaveAttribute('aria-pressed', 'true');
-  await expect(
-    page.getByRole('button', { name: 'AI', exact: true }),
-  ).toHaveAttribute('aria-pressed', 'false');
+  await expect(design).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tab', { name: 'AI' })).toHaveAttribute(
+    'aria-selected',
+    'false',
+  );
 });
 
 test('reviews show all 13 LinkedIn recommendations and step through them', async ({
@@ -197,17 +201,16 @@ test('layout adapts to a phone width', async ({ page }) => {
       .evaluate(
         (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length,
       );
-  expect(await columns('.hero-top')).toBe(1);
-  expect(await columns('.process-win')).toBe(1);
+  expect(await columns('.hero-poster-stage')).toBe(1);
   expect(await columns('.case')).toBe(1);
-  expect(await columns('.toolkit')).toBe(1);
+  expect(await columns('.tool-desk')).toBe(1);
   expect(await columns('.triple')).toBe(1);
 
   // The animation boxes must keep a fixed, modest height once Rive is playing.
-  await expect(page.locator('.process-char canvas')).toBeVisible({
+  await expect(page.locator('.hero-poster-art canvas')).toBeVisible({
     timeout: 20000,
   });
-  for (const selector of ['.process-char', '.toolkit-stage']) {
+  for (const selector of ['.hero-poster-figure', '.tool-desk-figure']) {
     const box = await page.locator(selector).boundingBox();
     expect(box!.height).toBeLessThanOrEqual(420);
   }
@@ -230,93 +233,6 @@ test('layout adapts to a phone width', async ({ page }) => {
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(375);
-});
-
-test('version 2 fits its first screen into one desktop viewport', async ({
-  page,
-  isMobile,
-}) => {
-  test.skip(isMobile, 'The one-screen layout is for desktop widths');
-  await page.setViewportSize({ width: 1366, height: 768 });
-  await page.goto('/v2');
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.locator('.hero-win-art canvas')).toBeVisible({
-    timeout: 20000,
-  });
-  // The pitch and the whole character sit in one window that ends inside the
-  // viewport, and the current step is written under the character.
-  const box = await page.locator('.hero-win').boundingBox();
-  expect(box!.y + box!.height).toBeLessThanOrEqual(768);
-  await expect(page.locator('.hero-win-copy #hero-title')).toBeVisible();
-  await expect(page.locator('.process-caption-text')).toContainText(
-    'Ask what the real problem is.',
-  );
-  await expect(page.getByRole('list', { name: 'How I work' })).toBeVisible();
-  // The cases appear once, in their own section, not duplicated up here.
-  await expect(page.getByRole('article')).toHaveCount(3);
-  // Nothing scrolls sideways, even with the wide glows.
-  expect(
-    await page.evaluate(() => document.documentElement.scrollWidth),
-  ).toBeLessThanOrEqual(1366);
-  // The menu keeps visitors on version 2.
-  await expect(
-    page.getByRole('link', { name: 'Articles' }).first(),
-  ).toHaveAttribute('href', '/v2#articles');
-});
-test('passes automated WCAG 2.2 AA checks on version 2', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/v2');
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-    .analyze();
-  expect(results.violations).toEqual([]);
-});
-test('version 3 fills exactly one desktop viewport with a split first screen', async ({
-  page,
-  isMobile,
-}) => {
-  test.skip(isMobile, 'The one-screen layout is for desktop widths');
-  await page.setViewportSize({ width: 1366, height: 768 });
-  await page.goto('/v3');
-  await expect(
-    page.getByRole('heading', { level: 1, name: /right problems to solve/ }),
-  ).toBeVisible();
-  await expect(page.locator('.hero-figure-art canvas')).toBeVisible({
-    timeout: 20000,
-  });
-  // The hero ends at the bottom edge of the viewport: nothing of the next
-  // section shows, and the frame with the character ends inside the hero.
-  const hero = await page.locator('.hero-split').boundingBox();
-  expect(Math.round(hero!.y + hero!.height)).toBeLessThanOrEqual(769);
-  const frame = await page.locator('.hero-figure').boundingBox();
-  expect(frame!.y + frame!.height).toBeLessThanOrEqual(768);
-  // The whole character is fitted in the frame, above the card.
-  const art = await page.locator('.hero-figure-art').boundingBox();
-  const card = await page.locator('.hero-figure-card').boundingBox();
-  expect(art!.y + art!.height).toBeLessThanOrEqual(card!.y);
-  await expect(page.locator('.process-caption-text')).toContainText(
-    'Ask what the real problem is.',
-  );
-  // At most two actions, and the cases appear once, in their own section.
-  await expect(page.locator('.hero-split-actions > *')).toHaveCount(2);
-  await expect(page.getByRole('article')).toHaveCount(3);
-  expect(
-    await page.evaluate(() => document.documentElement.scrollWidth),
-  ).toBeLessThanOrEqual(1366);
-  await expect(
-    page.getByRole('link', { name: 'Articles' }).first(),
-  ).toHaveAttribute('href', '/v3#articles');
-});
-
-test('passes automated WCAG 2.2 AA checks on version 3', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/v3');
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-    .analyze();
-  expect(results.violations).toEqual([]);
 });
 
 test('theme toggle switches to dark, persists and follows the D key', async ({

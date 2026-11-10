@@ -10,8 +10,8 @@ const meta = {
     groups: toolGroups,
     rive,
     heading: {
-      kicker: 'Toolkit',
-      first: 'Daily tools.',
+      kicker: 'Daily tools',
+      first: 'Tools.',
       second: 'Pick a group and watch the desk change.',
     },
   },

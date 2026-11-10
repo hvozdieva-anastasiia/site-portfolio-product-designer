@@ -9,8 +9,8 @@ const meta = {
   args: {
     items: talks,
     heading: {
-      kicker: 'Talks',
-      first: 'On camera.',
+      kicker: 'On camera',
+      first: 'Talks.',
       second: 'Conversations from the It Depends channel.',
     },
     channel: {

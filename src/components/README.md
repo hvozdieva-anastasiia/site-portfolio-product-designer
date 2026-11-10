@@ -13,10 +13,10 @@ Button/
 | Layer         | Folder           | What it is                                       | Examples                                                                                                                                                           |
 | ------------- | ---------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Atoms         | `atoms/`         | The smallest pieces. No knowledge of the site.   | `Button`, `Key`, `Kbd`, `Chip`, `Pill`, `Glyph`, `Avatar`, `Label`, `TextLink`, `Input`, `Display`, `Icon`, `Slab`, `Aurora`, `Skeleton`, `ToolTile`, `RouterLink` |
-| Molecules     | `molecules/`     | A few atoms working as one unit.                 | `SectionHead`, `Field`, `SegmentedRadios`, `MediaCard`, `QuoteFigure`, `ProcessList`, `PagerControls`, `SocialLinks`, `Wordmark`, `ThemeToggle`, `DialogCard`      |
+| Molecules     | `molecules/`     | A few atoms working as one unit.                 | `SectionHead`, `Field`, `SegmentedRadios`, `MediaCard`, `QuoteFigure`, `ProcessPicker`, `PagerControls`, `SocialLinks`, `Wordmark`, `ThemeToggle`, `DialogCard`    |
 | Illustrations | `illustrations/` | Decorative drawings built from atoms.            | `ArticleArt`, `CaseArt`, `CharacterScene`                                                                                                                          |
-| Organisms     | `organisms/`     | Larger parts with their own behaviour.           | `CaseCard`, `ProcessStage`, `ToolkitPanel`, `ReviewsSlider`, `ContactForm`, `ContactDialog`, `RiveSlot`                                                            |
-| Blocks        | `blocks/`        | **The sections of the page.** Each stands alone. | `Header`, `Hero`, `Cases`, `Articles`, `Talks`, `Toolkit`, `Reviews`, `Contact`, `Footer`                                                                          |
+| Organisms     | `organisms/`     | Larger parts with their own behaviour.           | `CaseCard`, `ToolDesk`, `ReviewsSlider`, `ContactForm`, `ContactDialog`, `RiveSlot`                                                                                |
+| Blocks        | `blocks/`        | **The sections of the page.** Each stands alone. | `Header`, `HeroPoster`, `Cases`, `Articles`, `Talks`, `ToolkitDesk`, `Reviews`, `Contact`, `Footer`                                                                |
 
 Pages live in `src/pages/` and only wire content into blocks.
 

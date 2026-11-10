@@ -25,9 +25,16 @@ export const AdApp: Story = { args: { item: cases[2], number: 3 } };
 export const LinksToCasePage: Story = {
   args: { ...Yezzz.args },
   play: async ({ canvas, args }) => {
-    const link = canvas.getByRole('link', {
-      name: `View project: ${args.item.title}`,
-    });
-    await expect(link).toHaveAttribute('href', `/cases/${args.item.slug}`);
+    // The title, the preview and the button all lead to the case page.
+    const links = [
+      canvas.getByRole('link', { name: args.item.title }),
+      ...canvas.getAllByRole('link', {
+        name: `View project: ${args.item.title}`,
+      }),
+    ];
+    expect(links).toHaveLength(3);
+    for (const link of links) {
+      await expect(link).toHaveAttribute('href', `/cases/${args.item.slug}`);
+    }
   },
 };

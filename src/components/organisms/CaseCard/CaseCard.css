@@ -31,6 +31,20 @@
   font: 500 28px/1.29 var(--font);
   letter-spacing: -0.28px;
 }
+.case h3 a {
+  text-decoration: none;
+}
+.case h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.case-art {
+  display: block;
+  border-radius: 12px;
+}
+.case-art .art {
+  height: 100%;
+}
 .case-summary {
   margin-top: 8px;
   color: var(--graphite);

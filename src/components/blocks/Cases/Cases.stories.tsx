@@ -10,8 +10,8 @@ const meta = {
     items: cases,
     heading: {
       kicker: 'Selected work',
-      first: 'Three projects.',
-      second: 'A telecom brand, an eSIM feature and a campaign app.',
+      first: 'Cases.',
+      second: 'From real problems to measurable results.',
     },
   },
 } satisfies Meta<typeof Cases>;

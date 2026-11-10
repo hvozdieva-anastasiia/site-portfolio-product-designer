@@ -9,8 +9,8 @@ const meta = {
   args: {
     reviews,
     heading: {
-      kicker: 'Reviews',
-      first: 'Kind words.',
+      kicker: 'Kind words',
+      first: 'Reviews.',
       second: 'Recommendations from colleagues on LinkedIn.',
     },
     recommendationsUrl: profile.linkedinRecommendations,

@@ -1,6 +1,7 @@
 import {
   articles,
   cases,
+  contactRive,
   processSteps,
   profile,
   reviews,
@@ -11,31 +12,42 @@ import {
 import { Articles } from '../../components/blocks/Articles/Articles';
 import { Cases } from '../../components/blocks/Cases/Cases';
 import { Contact } from '../../components/blocks/Contact/Contact';
-import { Hero } from '../../components/blocks/Hero/Hero';
+import { HeroPoster } from '../../components/blocks/HeroPoster/HeroPoster';
 import { Reviews } from '../../components/blocks/Reviews/Reviews';
 import { Talks } from '../../components/blocks/Talks/Talks';
-import { Toolkit } from '../../components/blocks/Toolkit/Toolkit';
+import { ToolkitDesk } from '../../components/blocks/ToolkitDesk/ToolkitDesk';
 
 /**
- * The one-page home. It only wires content into independent blocks, so any
- * block can be removed, reordered or reused on another page.
+ * The home page: the poster hero, the selected cases, articles, talks, the
+ * toolkit (the groups as an index set in large type, with the picked group's
+ * tools on the character's desk), reviews and the contact block.
  */
-export function HomePage({ onContact }: { onContact: () => void }) {
+export function HomePage({
+  onContact,
+}: {
+  onContact: (message?: string) => void;
+}) {
   return (
     <>
-      <Hero
-        kicker={`${profile.role} · ${profile.location}`}
+      <HeroPoster
+        kicker={`Hi, I’m Anastasiia · ${profile.role}`}
         title={
           <>
-            Hi, I’m Anastasiia.
-            <br />I find the right
+            I find the <em>right</em>
             <br />
-            problems to solve.
+            <em>problems</em> to solve.
           </>
         }
-        summary="Then I validate solutions through research, data and experimentation, for telecom, travel and advertising products."
+        summary="Then I validate solutions through research, data and experimentation."
+        businessDomains={[
+          'Fintech',
+          'Healthcare',
+          'Telecom',
+          'Travel',
+          'Advertising',
+        ]}
         primaryAction={{ label: 'View selected work', href: '#cases' }}
-        secondaryAction={{ label: 'Get in touch', onClick: onContact }}
+        secondaryAction={{ label: 'Get in touch', onClick: () => onContact() }}
         steps={processSteps}
         rive={rive}
         processLabel="How I work"
@@ -45,8 +57,8 @@ export function HomePage({ onContact }: { onContact: () => void }) {
         items={cases}
         heading={{
           kicker: 'Selected work',
-          first: 'Three projects.',
-          second: 'A telecom brand, an eSIM feature and a campaign app.',
+          first: 'Cases.',
+          second: 'From real problems to measurable results.',
         }}
       />
       <Articles
@@ -61,8 +73,8 @@ export function HomePage({ onContact }: { onContact: () => void }) {
       <Talks
         items={talks}
         heading={{
-          kicker: 'Talks',
-          first: 'On camera.',
+          kicker: 'On camera',
+          first: 'Talks.',
           second: 'Conversations from the It Depends channel.',
         }}
         channel={{
@@ -71,25 +83,25 @@ export function HomePage({ onContact }: { onContact: () => void }) {
           href: profile.youtube,
         }}
       />
-      <Toolkit
+      <ToolkitDesk
         groups={toolGroups}
         rive={rive}
         heading={{
-          kicker: 'Toolkit',
-          first: 'Daily tools.',
+          kicker: 'Daily tools',
+          first: 'Tools.',
           second: 'Pick a group and watch the desk change.',
         }}
       />
       <Reviews
         reviews={reviews}
         heading={{
-          kicker: 'Reviews',
-          first: 'Kind words.',
+          kicker: 'Kind words',
+          first: 'Reviews.',
           second: 'Recommendations from colleagues on LinkedIn.',
         }}
         recommendationsUrl={profile.linkedinRecommendations}
       />
-      <Contact name={profile.name} onContact={onContact} />
+      <Contact name={profile.name} onContact={onContact} mascot={contactRive} />
     </>
   );
 }
