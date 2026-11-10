@@ -1,3 +1,4 @@
+import { withBase } from '../../../lib/router';
 import { useEffect, useRef, useState } from 'react';
 import type { NavLink } from '../../../content/types';
 import { Key } from '../../atoms/Key/Key';
@@ -56,7 +57,7 @@ export function Header({
           aria-label="Main navigation"
         >
           {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <a key={link.href} href={withBase(link.href)} onClick={() => setOpen(false)}>
               {link.label}
             </a>
           ))}

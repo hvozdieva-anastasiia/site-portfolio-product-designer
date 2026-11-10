@@ -6,7 +6,7 @@ const typing = 'TypingDemo';
 // artboard "OfficeCharacter", one state machine per clip. The runtime and the
 // .riv live in public/rive/.
 export const rive: RiveConfig = {
-  src: '/rive/office-character.riv?v=keyboard-hands',
+  src: `${import.meta.env.BASE_URL}rive/office-character.riv?v=keyboard-hands`,
   artboard: 'OfficeCharacter',
   /** Idle loop, used until a clip is chosen. */
   idle: 'Character',

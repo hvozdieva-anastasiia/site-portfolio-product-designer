@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes } from 'react';
-import { navigate } from '../../../lib/router';
+import { navigate, withBase } from '../../../lib/router';
 
 type RouterLinkProps = { to: string } & Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -11,7 +11,7 @@ export function RouterLink({ to, onClick, ...rest }: RouterLinkProps) {
   return (
     <a
       {...rest}
-      href={to}
+      href={withBase(to)}
       onClick={(event) => {
         onClick?.(event);
         if (

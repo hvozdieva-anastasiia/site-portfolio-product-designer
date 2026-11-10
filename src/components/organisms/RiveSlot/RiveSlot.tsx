@@ -36,13 +36,13 @@ function loadRuntime() {
   runtime ??= new Promise<RiveLib>((resolve, reject) => {
     const settle = () => {
       const lib = (window as unknown as { rive: RiveLib }).rive;
-      lib.RuntimeLoader.setWasmUrl('/rive/rive.wasm');
-      lib.RuntimeLoader.setWasmFallbackUrl?.('/rive/rive_fallback.wasm');
+      lib.RuntimeLoader.setWasmUrl(`${import.meta.env.BASE_URL}rive/rive.wasm`);
+      lib.RuntimeLoader.setWasmFallbackUrl?.(`${import.meta.env.BASE_URL}rive/rive_fallback.wasm`);
       resolve(lib);
     };
     if ((window as unknown as { rive?: RiveLib }).rive) return settle();
     const script = document.createElement('script');
-    script.src = '/rive/rive.js';
+    script.src = `${import.meta.env.BASE_URL}rive/rive.js`;
     script.async = true;
     script.onload = settle;
     script.onerror = () => {

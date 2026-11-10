@@ -8,7 +8,7 @@ import type { CaseStudy, Screen } from './types';
 const shotsFor =
   (slug: string) =>
   (name: string, alt: string, height: number, width = 720): Screen => ({
-    src: `/cases/${slug}/${name}.webp`,
+    src: `${import.meta.env.BASE_URL}cases/${slug}/${name}.webp`,
     alt,
     width,
     height,

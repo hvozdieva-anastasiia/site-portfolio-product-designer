@@ -13,7 +13,7 @@ export const tools = {
   hotjar: { name: 'Hotjar', icon: 'hotjar' },
   maze: { name: 'Maze', icon: 'maze' },
   // Not in simple-icons: the logomark from useberry.com, in one colour.
-  useberry: { name: 'Useberry', src: '/icons/useberry.svg' },
+  useberry: { name: 'Useberry', src: `${import.meta.env.BASE_URL}icons/useberry.svg` },
   ga: { name: 'Google Analytics', icon: 'googleanalytics' },
   notion: { name: 'Notion', icon: 'notion' },
   jira: { name: 'Jira', icon: 'jira' },
