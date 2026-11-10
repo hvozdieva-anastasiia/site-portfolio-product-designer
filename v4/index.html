@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anastasiia Hvozdieva, product designer based in Bucharest. Selected cases, articles, talks and recommendations: research, interface design and analytics in one loop."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/site-portfolio-product-designer/mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      (function () {
+        var theme = 'light';
+        try {
+          theme = localStorage.getItem('theme');
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          }
+        } catch (e) {
+          theme = 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta)
+          meta.setAttribute(
+            'content',
+            theme === 'dark' ? '#0c0c0d' : '#ffffff',
+          );
+      })();
+    </script>
+    <title>Anastasiia Hvozdieva · Product Designer</title>
+    <script type="module" crossorigin src="/site-portfolio-product-designer/assets/index-8LnLO5UD.js"></script>
+    <link rel="stylesheet" crossorigin href="/site-portfolio-product-designer/assets/index-OzvdHWv6.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
