@@ -1,6 +1,6 @@
 import type { Article } from '../../../content/types';
 import { ExternalTextLink } from '../../atoms/TextLink/TextLink';
-import { ArticleArt } from '../../illustrations/ArticleArt/ArticleArt';
+import { ArticleVisual } from '../../organisms/ArticleVisual/ArticleVisual';
 import { MediaCard } from '../../molecules/MediaCard/MediaCard';
 import { MediaGrid } from '../../molecules/MediaGrid/MediaGrid';
 import { SectionHead } from '../../molecules/SectionHead/SectionHead';
@@ -28,7 +28,13 @@ export function Articles({ items, heading, allLink }: ArticlesProps) {
           <li key={article.title}>
             <MediaCard
               href={article.href}
-              media={<ArticleArt kind={article.art} />}
+              media={
+                <ArticleVisual
+                  cover={article.cover}
+                  coverAlt={article.coverAlt}
+                  art={article.art}
+                />
+              }
               meta={article.meta}
               title={article.title}
               text={article.summary}

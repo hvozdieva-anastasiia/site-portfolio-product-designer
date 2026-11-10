@@ -1,3 +1,4 @@
+export * from './ArticleVisual/ArticleVisual';
 export * from './CaseCard/CaseCard';
 export * from './CaseSpec/CaseSpec';
 export * from './CaseVisual/CaseVisual';

@@ -54,6 +54,9 @@ export type Article = {
   summary: string;
   meta: string;
   href: string;
+  /** Article cover from public/articles/. If it fails to load, the illustration below is shown. */
+  cover: string;
+  coverAlt: string;
   art: ArticleArtKind;
 };
 
