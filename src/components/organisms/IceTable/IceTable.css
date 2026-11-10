@@ -4,15 +4,8 @@
   background: var(--surface);
   box-shadow: var(--window-shadow);
 }
-.ice-scroll {
-  overflow-x: auto;
-}
-.ice-scroll:focus-visible {
-  outline-offset: -2px;
-}
 .ice table {
   width: 100%;
-  min-width: 560px;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }
@@ -100,15 +93,39 @@
   background: var(--carbon);
 }
 @media (max-width: 640px) {
+  .ice table {
+    table-layout: fixed;
+    font-size: 13px;
+  }
+  .ice th,
+  .ice td {
+    padding: 10px 4px;
+  }
   .ice th:first-child,
   .ice td:first-child {
-    padding-left: 16px;
+    width: 32px;
+    padding-left: 8px;
+  }
+  .ice thead th:nth-child(n + 3):nth-child(-n + 5) {
+    width: clamp(22px, 6vw, 36px);
+  }
+  .ice tbody th {
+    overflow-wrap: anywhere;
   }
   .ice td:last-child,
   .ice th:last-child {
-    padding-right: 16px;
+    width: 56px;
+    padding-right: 8px;
+    text-align: center;
+  }
+  .ice-score {
+    min-width: 0;
+    padding-inline: 6px;
   }
   .ice-foot {
     padding: 16px;
+  }
+  .ice-foot .btn {
+    width: 100%;
   }
 }

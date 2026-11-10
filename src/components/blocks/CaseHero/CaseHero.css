@@ -37,10 +37,20 @@
 }
 @media (max-width: 640px) {
   .case-hero {
-    padding-top: 24px;
+    padding-top: 8px;
   }
   .case-hero-copy {
-    margin: 28px 0 40px;
+    gap: 16px;
+    margin: 12px 0 28px;
+  }
+  .case-hero .display {
+    font-size: clamp(31px, 8vw, 40px);
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+  .case-hero-row {
+    gap: 16px;
+    margin-bottom: 4px;
   }
   .case-hero-lead {
     font-size: 16px;

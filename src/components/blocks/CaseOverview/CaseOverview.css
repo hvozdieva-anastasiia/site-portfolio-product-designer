@@ -26,10 +26,15 @@
 }
 @media (max-width: 900px) {
   .case-overview {
-    margin-top: 72px;
+    margin-top: clamp(48px, 8vw, 72px);
   }
   .case-overview-grid {
+    gap: 24px;
+  }
+}
+@media (max-width: 640px) {
+  .case-overview-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 20px;
   }
 }

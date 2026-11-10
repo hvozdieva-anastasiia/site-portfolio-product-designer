@@ -48,7 +48,7 @@ export function CasePage({ slug }: { slug: string }) {
   }
 
   // Cases with a full write-up get the product case study page.
-  if (study) return <CaseStudyPage study={study} item={item} />;
+  if (study) return <CaseStudyPage key={slug} study={study} item={item} />;
 
   return (
     <article className="case-page container" aria-labelledby="case-page-title">

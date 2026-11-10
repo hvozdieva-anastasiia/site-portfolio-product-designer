@@ -36,11 +36,20 @@
 }
 @media (max-width: 900px) {
   .case-role {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 32px;
   }
   .case-role-main h2 {
     font-size: 30px;
     letter-spacing: -0.8px;
+  }
+}
+@media (max-width: 640px) {
+  .case-role {
+    grid-template-columns: 1fr;
+  }
+  .case-role-main > p:not(.label),
+  .case-role-scope li {
+    font-size: 16px;
+    line-height: 26px;
   }
 }

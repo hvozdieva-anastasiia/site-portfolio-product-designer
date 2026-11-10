@@ -98,6 +98,54 @@ test('hero greets by name and shows the four-step process', async ({
   await expect(page.locator('.process li[aria-current="step"]')).toHaveCount(1);
 });
 
+for (const slug of ['yezzz', 'yo-esim', 'ad-management-app']) {
+  test(`${slug} keeps case content readable on phones and tablets`, async ({
+    page,
+  }) => {
+    await page.goto(`/cases/${slug}`);
+    await expect(page.locator('#case-title')).toBeVisible();
+
+    for (const width of [320, 390, 430, 768, 1024]) {
+      await page.setViewportSize({ width, height: 844 });
+      const layout = await page.evaluate(() => {
+        const root = document.documentElement;
+        const gallery = document.querySelector<HTMLElement>(
+          '.case-flow .screen-strip-list',
+        )!;
+        const ice = document.querySelector<HTMLElement>('.ice');
+        return {
+          pageFits: root.scrollWidth <= root.clientWidth,
+          galleryScrolls: gallery.scrollWidth > gallery.clientWidth,
+          tableFits: !ice || ice.scrollWidth <= ice.clientWidth,
+        };
+      });
+      expect(layout, `${width}px`).toEqual({
+        pageFits: true,
+        galleryScrolls: true,
+        tableFits: true,
+      });
+    }
+
+    await page.setViewportSize({ width: 320, height: 700 });
+    const menu = page.getByRole('button', { name: 'Menu' });
+    await menu.click();
+    const casesLink = page
+      .getByRole('navigation', { name: 'Main navigation' })
+      .getByRole('link', { name: 'Cases' });
+    await expect(casesLink).toBeFocused();
+    await casesLink.press('Escape');
+    await expect(menu).toBeFocused();
+    await expect(menu).toHaveAttribute('aria-expanded', 'false');
+
+    await page
+      .getByRole('navigation', { name: 'More work' })
+      .getByRole('link', { name: /Next case/ })
+      .click();
+    await expect(page).not.toHaveURL(new RegExp(`/cases/${slug}$`));
+    await expect(page.locator('#case-title')).toBeVisible();
+  });
+}
+
 test('the animated character loads in the hero', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.process-char canvas')).toBeVisible({

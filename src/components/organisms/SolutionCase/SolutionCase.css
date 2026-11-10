@@ -99,15 +99,39 @@
   }
 }
 @media (max-width: 640px) {
+  .solution {
+    gap: 20px;
+  }
   .solution-head h3 {
     font-size: 26px;
     letter-spacing: -0.6px;
   }
   .solution-why,
   .solution-ui {
-    padding: 24px 16px;
+    padding: 20px 16px 24px;
+  }
+  .solution-ui-top {
+    flex-direction: column;
+    align-items: flex-start;
   }
   .solution-screens {
-    gap: 14px;
+    gap: 20px;
+  }
+}
+@media (max-width: 560px) {
+  .solution-screens {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .solution-screens > li,
+  .solution-screens[data-count='1'] > li {
+    flex: none;
+    width: min(100% - 14px, 280px);
+  }
+  .solution-screens .phone-shot {
+    aspect-ratio: auto;
+  }
+  .solution-screens .phone-shot img {
+    height: auto;
   }
 }

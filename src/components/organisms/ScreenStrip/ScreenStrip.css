@@ -43,24 +43,51 @@
 .screen-strip-list:focus-visible {
   outline-offset: -4px;
 }
+.screen-strip-hint {
+  display: none;
+  position: relative;
+  padding: 14px 20px 0;
+  color: var(--graphite);
+  font-size: 13px;
+}
 
 /* Narrow screens: the phones keep a readable size and scroll sideways. */
-@media (max-width: 900px) {
-  .screen-strip-list {
+@media (max-width: 1080px) {
+  .screen-strip[data-flow] .screen-strip-hint {
+    display: block;
+  }
+  .screen-strip[data-flow] .screen-strip-list {
     justify-content: flex-start;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scroll-padding-inline: 20px;
+    padding: 20px 20px 24px;
   }
-  .screen-strip-list > li,
-  .screen-strip[data-count] .screen-strip-list > li {
-    flex: 0 0 min(220px, 62vw);
+  .screen-strip[data-flow] .screen-strip-list > li {
+    flex: 0 0 min(220px, 76%);
     scroll-snap-align: start;
   }
-  .screen-strip[data-count='1'] .screen-strip-list {
-    justify-content: center;
+  .screen-strip-step {
+    min-height: 2.8em;
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .screen-strip:not([data-count='1']) .screen-strip-hint {
+    display: block;
+  }
+  .screen-strip:not([data-count='1']) .screen-strip-list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 20px;
+    padding: 20px 20px 24px;
+  }
+  .screen-strip:not([data-count='1']) .screen-strip-list > li {
+    flex: 0 0 min(248px, 86%);
+    scroll-snap-align: start;
   }
   .screen-strip[data-count='1'] .screen-strip-list > li {
-    flex-basis: min(260px, 72vw);
+    flex-basis: min(260px, 100%);
   }
 }

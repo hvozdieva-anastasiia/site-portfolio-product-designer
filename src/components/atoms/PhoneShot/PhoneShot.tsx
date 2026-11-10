@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { Screen } from '../../../content/types';
 import './PhoneShot.css';
 
@@ -19,7 +20,10 @@ export function PhoneShot({
 }: PhoneShotProps) {
   const ratio = Math.min(height / width, MAX_RATIO);
   return (
-    <div className="phone-shot" style={{ aspectRatio: `1 / ${ratio}` }}>
+    <div
+      className="phone-shot"
+      style={{ '--phone-shot-ratio': `1 / ${ratio}` } as CSSProperties}
+    >
       <img
         src={src}
         alt={alt}

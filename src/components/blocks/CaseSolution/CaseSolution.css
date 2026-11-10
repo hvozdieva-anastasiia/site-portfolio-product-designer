@@ -4,6 +4,6 @@
 }
 @media (max-width: 900px) {
   .case-solution-list {
-    gap: 80px;
+    gap: clamp(48px, 9vw, 80px);
   }
 }

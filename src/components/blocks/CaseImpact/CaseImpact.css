@@ -58,15 +58,11 @@
   font-size: 12px;
 }
 @media (max-width: 900px) {
-  .case-impact-stats,
-  .case-impact-stats--delivered {
-    grid-template-columns: 1fr;
+  .case-impact-stats {
     gap: 24px;
     padding: 28px 24px;
   }
   .case-impact-arrow {
-    transform: rotate(90deg);
-    justify-self: start;
     font-size: 28px;
   }
   .case-impact-metrics {
@@ -77,6 +73,14 @@
   }
 }
 @media (max-width: 640px) {
+  .case-impact-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .case-impact-arrow {
+    transform: rotate(90deg);
+    justify-self: start;
+  }
   .case-impact-metrics ul {
     grid-template-columns: 1fr;
   }

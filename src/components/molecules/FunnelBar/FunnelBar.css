@@ -42,3 +42,16 @@
 .funnel-bar[data-emphasis='true'] .funnel-bar-track i {
   background: var(--ink);
 }
+@media (max-width: 480px) {
+  .funnel-bar {
+    gap: 6px;
+  }
+  .funnel-bar-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+  .funnel-bar-figures {
+    justify-content: space-between;
+  }
+}

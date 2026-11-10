@@ -1,6 +1,7 @@
 .phone-shot {
   position: relative;
   width: 100%;
+  aspect-ratio: var(--phone-shot-ratio);
   overflow: hidden;
   border-radius: 28px;
   background: var(--surface);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { NavLink } from '../../../content/types';
 import { Key } from '../../atoms/Key/Key';
 import { Kbd } from '../../atoms/Kbd/Kbd';
@@ -26,8 +26,22 @@ export function Header({
   onContact,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (open)
+      navRef.current?.querySelector('a')?.focus({ preventScroll: true });
+  }, [open]);
   return (
-    <header className="nav">
+    <header
+      className="nav"
+      onKeyDown={(event) => {
+        if (open && event.key === 'Escape') {
+          setOpen(false);
+          toggleRef.current?.focus();
+        }
+      }}
+    >
       <div className="nav-inner">
         <Wordmark
           name={name}
@@ -35,6 +49,7 @@ export function Header({
           onClick={() => setOpen(false)}
         />
         <nav
+          ref={navRef}
           className="nav-links"
           id="nav-menu"
           data-open={open}
@@ -58,10 +73,17 @@ export function Header({
             LinkedIn <Kbd>L</Kbd>
           </a>
           {!themeToggleBeforeLinkedIn && <ThemeToggle />}
-          <Key onClick={onContact} aria-keyshortcuts="C">
+          <Key
+            onClick={() => {
+              setOpen(false);
+              onContact();
+            }}
+            aria-keyshortcuts="C"
+          >
             Get in touch <Kbd>C</Kbd>
           </Key>
           <button
+            ref={toggleRef}
             type="button"
             className="nav-toggle"
             aria-expanded={open}

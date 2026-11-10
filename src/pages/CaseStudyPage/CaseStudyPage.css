@@ -4,6 +4,34 @@
 }
 @media (max-width: 900px) {
   .case-study {
-    --section-gap: 104px;
+    --section-gap: clamp(64px, 11vw, 104px);
+  }
+  .case-route .nav-links {
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+  }
+  .case-route :is(.nav-toggle, .nav-actions .key--icon) {
+    min-width: 44px;
+  }
+  .case-route
+    :is(.nav-toggle, .nav-links a, .nav-actions .key, .nav-inner .wordmark),
+  .case-study :is(.btn, .link-arrow),
+  .case-route .footer-grid :is(li a, .footer-link) {
+    min-height: 44px;
+  }
+}
+@media (max-width: 640px) {
+  .case-route .nav-actions {
+    gap: 6px;
+  }
+  .case-route .nav-actions .key:not(.key--icon) {
+    padding-inline: 8px;
+  }
+  .case-route .footer {
+    margin-top: 72px;
+    padding-top: 36px;
+  }
+  .case-route .footer-legal {
+    margin-top: 32px;
   }
 }

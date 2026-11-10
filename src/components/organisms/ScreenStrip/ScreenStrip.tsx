@@ -24,14 +24,25 @@ export function ScreenStrip({
   label,
 }: ScreenStripProps) {
   const Tag = steps ? 'ol' : 'ul';
+  const multiple = screens.length > 1;
   return (
-    <div className="screen-strip" data-count={screens.length}>
+    <div
+      className="screen-strip"
+      data-count={screens.length}
+      data-flow={steps ? '' : undefined}
+    >
       <Aurora variant="panel" />
+      {multiple && (
+        <p className="screen-strip-hint">
+          {screens.length} screens · Scroll to explore{' '}
+          <span aria-hidden="true">→</span>
+        </p>
+      )}
       <Tag
         className="screen-strip-list"
         aria-label={label}
         // Scrolls sideways on phones, so keyboard users must be able to reach it.
-        tabIndex={screens.length > 1 ? 0 : undefined}
+        tabIndex={multiple ? 0 : undefined}
       >
         {screens.map((screen, index) => (
           <li key={screen.src}>

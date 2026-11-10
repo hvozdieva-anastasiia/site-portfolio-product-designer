@@ -73,7 +73,12 @@ export function App() {
     : navLinks;
 
   return (
-    <div id="top" className={isV4Look ? 'portfolio-v4' : undefined}>
+    <div
+      id="top"
+      className={
+        caseSlug ? 'case-route' : isV4Look ? 'portfolio-v4' : undefined
+      }
+    >
       <a className="skip-link" href="#main">
         Skip to content
       </a>

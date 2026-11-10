@@ -69,15 +69,14 @@
 }
 @media (max-width: 900px) {
   .case-problem-intro {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
+    margin-bottom: 36px;
   }
   .case-problem-before .phone-shot {
     max-width: 260px;
   }
-  .case-problem-stats,
-  .case-problem-friction {
-    grid-template-columns: 1fr;
+  .case-problem-stats > li {
+    padding: 20px;
   }
   .case-problem-sub {
     margin-top: 72px;
@@ -88,5 +87,19 @@
   .case-problem-question p:last-child {
     font-size: 24px;
     letter-spacing: -0.5px;
+  }
+}
+@media (max-width: 640px) {
+  .case-problem-intro,
+  .case-problem-stats,
+  .case-problem-friction {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .case-problem-sub {
+    margin: 48px 0 20px;
+    font-size: 22px;
+  }
+  .case-problem-question {
+    padding: 24px 20px;
   }
 }
