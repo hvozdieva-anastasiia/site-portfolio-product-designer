@@ -7,10 +7,13 @@ export const profile: Profile = {
   name: 'Anastasiia Hvozdieva',
   role: 'Senior Product Designer', // as on DOU: Yonder Media Mobile
   location: 'Bucharest, Romania',
-  email: 'hello@example.com', // PLACEHOLDER: where the contact form sends mail
-  // Optional. Paste a Formspree (or similar) endpoint to send messages straight
-  // from the form. When empty, the form opens the visitor's email app instead.
-  formEndpoint: '',
+  // Where the contact form sends mail. Not displayed on the site: it is only
+  // used by the mail-app fallback when no form endpoint is set.
+  email: 'h.29anastasiia@gmail.com',
+  // Formspree endpoint the form posts to. When empty, the form opens the
+  // visitor's email app instead.
+  formEndpoint: 'https://formspree.io/f/mwloeqgq',
+
   linkedin: 'https://www.linkedin.com/in/hvozdieva-ai-product-ui-ux-design/',
   linkedinRecommendations:
     'https://www.linkedin.com/in/hvozdieva-ai-product-ui-ux-design/details/recommendations/',

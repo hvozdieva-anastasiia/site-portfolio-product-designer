@@ -19,9 +19,6 @@
   font-size: 13px;
   line-height: 20px;
 }
-.form-error a {
-  font-weight: 500;
-}
 .hp {
   position: absolute;
   left: -9999px;
@@ -32,17 +29,9 @@
 .form-foot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   padding-top: 4px;
-}
-.form-alt {
-  color: var(--graphite);
-  font-size: 13px;
-}
-.form-alt a {
-  color: var(--ink);
-  text-underline-offset: 3px;
 }
 .success {
   display: flex;

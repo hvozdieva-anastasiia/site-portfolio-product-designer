@@ -46,7 +46,7 @@ function validate(values: Record<FieldName, string>) {
 }
 
 type ContactFormProps = {
-  /** Where messages go. Used for the mail app fallback and for copying. */
+  /** Where messages go. Used only for the mail app fallback; never rendered. */
   email: string;
   /**
    * Optional endpoint (for example Formspree) the form posts to. When empty,
@@ -73,7 +73,6 @@ export function ContactForm({
   });
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [status, setStatus] = useState<Status>('idle');
-  const [copied, setCopied] = useState(false);
   const [mailtoHref, setMailtoHref] = useState('');
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -136,16 +135,6 @@ export function ContactForm({
     setStatus('mailto');
   }
 
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* clipboard unavailable: the address is visible anyway */
-    }
-  }
-
   const card = {
     title: 'Get in touch',
     titleId: 'contact-title',
@@ -168,16 +157,11 @@ export function ContactForm({
           <p>
             {status === 'sent'
               ? 'Thanks, I’ll get back to you by email.'
-              : 'Press send there and your message is on its way. Nothing opened? Use the buttons below.'}
+              : 'Press send there and your message is on its way. Nothing opened? Try the button below.'}
           </p>
           <div className="success-actions">
             {status === 'mailto' && (
-              <>
-                <ButtonLink href={mailtoHref}>Open email app</ButtonLink>
-                <Button onClick={copyEmail}>
-                  {copied ? 'Copied' : 'Copy address'}
-                </Button>
-              </>
+              <ButtonLink href={mailtoHref}>Open email app</ButtonLink>
             )}
             <Button variant="carbon" onClick={onClose}>
               Done
@@ -271,15 +255,11 @@ export function ContactForm({
 
         {status === 'error' && (
           <p className="form-error" role="alert">
-            Something went wrong sending that. Please try again, or email{' '}
-            <a href={`mailto:${email}`}>{email}</a> directly.
+            Something went wrong sending that. Please try again in a moment.
           </p>
         )}
 
         <div className="form-foot">
-          <p className="form-alt">
-            Or write directly: <a href={`mailto:${email}`}>{email}</a>
-          </p>
           <Button
             type="submit"
             variant="carbon"
