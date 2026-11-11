@@ -69,7 +69,7 @@ export function ContactForm({
     email: '',
     message: initialMessage,
     topic: 'project' as Topic,
-    company: '', // honeypot, hidden from people
+    gotcha: '', // honeypot, hidden from people
   });
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [status, setStatus] = useState<Status>('idle');
@@ -97,7 +97,7 @@ export function ContactForm({
       target.current?.focus();
       return;
     }
-    if (values.company) {
+    if (values.gotcha) {
       setStatus('sent'); // a bot filled the hidden field; pretend it worked
       return;
     }
@@ -243,13 +243,17 @@ export function ContactForm({
         </Field>
 
         <div className="hp" aria-hidden="true">
-          <label htmlFor="cf-company">Company</label>
+          <label htmlFor="cf-gotcha">Leave this field empty</label>
           <Input
-            id="cf-company"
+            id="cf-gotcha"
+            name="_gotcha"
             tabIndex={-1}
             autoComplete="off"
-            value={values.company}
-            onChange={(event) => set('company', event.target.value)}
+            data-1p-ignore
+            data-lpignore="true"
+            data-form-type="other"
+            value={values.gotcha}
+            onChange={(event) => set('gotcha', event.target.value)}
           />
         </div>
 

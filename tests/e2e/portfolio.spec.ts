@@ -260,9 +260,21 @@ test('first visit follows the system dark preference', async ({ browser }) => {
   await context.close();
 });
 
-test('contact form validates, then opens the mail app on submit', async ({
+test('contact form validates, then posts the message to the endpoint', async ({
   page,
 }) => {
+  // The form posts to the configured endpoint (Formspree). The request is
+  // intercepted so tests never send real mail.
+  let sent: Record<string, unknown> | null = null;
+  await page.route('**/formspree.io/**', async (route) => {
+    sent = route.request().postDataJSON();
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: '{"ok":true}',
+    });
+  });
+
   await page.goto('/');
   await page.getByRole('button', { name: 'Get in touch' }).first().click();
   const dialog = page.getByRole('dialog', { name: 'Get in touch' });
@@ -279,18 +291,46 @@ test('contact form validates, then opens the mail app on submit', async ({
   await dialog
     .getByLabel('Message')
     .fill('We need help with our onboarding flow.');
-  // Without a form endpoint the form hands off to the visitor's email app.
   await dialog.getByRole('button', { name: 'Send message' }).click();
-  await expect(dialog.getByRole('status')).toContainText(
-    'Your email app should be open',
-  );
-  await expect(
-    dialog.getByRole('link', { name: 'Open email app' }),
-  ).toHaveAttribute('href', /^mailto:.*subject=.*Jane%20Smith/);
+
+  await expect(dialog.getByRole('status')).toContainText('Message sent');
+  expect(sent).toMatchObject({
+    name: 'Jane Smith',
+    email: 'jane@company.com',
+    message: 'We need help with our onboarding flow.',
+  });
   await expect(page).toHaveURL('/');
 
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
+});
+
+test('a filled honeypot field silently drops the message', async ({ page }) => {
+  let requested = false;
+  await page.route('**/formspree.io/**', (route) => {
+    requested = true;
+    return route.fulfill({ status: 200, body: '{"ok":true}' });
+  });
+
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Get in touch' }).first().click();
+  const dialog = page.getByRole('dialog', { name: 'Get in touch' });
+  await dialog.getByLabel('Name').fill('Bot');
+  await dialog.getByLabel('Email').fill('bot@spam.dev');
+  await dialog.getByLabel('Message').fill('Buy my crypto now please.');
+  // A bot filling the hidden field trips the honeypot.
+  await page.locator('#cf-gotcha').evaluate((el: HTMLInputElement) => {
+    const setter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      'value',
+    )!.set!;
+    setter.call(el, 'spam');
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await dialog.getByRole('button', { name: 'Send message' }).click();
+
+  await expect(dialog.getByRole('status')).toContainText('Message sent');
+  expect(requested).toBe(false);
 });
 
 test('C key opens the contact form', async ({ page, isMobile }) => {
